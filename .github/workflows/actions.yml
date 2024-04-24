@@ -22,7 +22,7 @@ jobs:
 ###        Connected to my personal Sonar Cloud account      ###
 ################################################################
 
-     - name: SonarCloud Scan
+    - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
