@@ -183,9 +183,9 @@ jobs:
         
         # Copy compose.yml and Dockerfile to EC2 server
         $SCP_COMMAND compose.yaml $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
-        $SCP_COMMAND Dockerfile $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
-        $SCP_COMMAND counter-service.py $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
-        $SCP_COMMAND requirements.txt $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
+        #$SCP_COMMAND Dockerfile $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
+        #$SCP_COMMAND counter-service.py $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
+        #$SCP_COMMAND requirements.txt $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
 
         
         # Pull and run the Docker container on EC2
