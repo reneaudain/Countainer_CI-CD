@@ -172,7 +172,7 @@ jobs:
         # Save PEM key to file and set permissions
         echo "$EC2_PEM_KEY" > $EC2_KEY_NAME.pem
         chmod 400 $EC2_KEY_NAME.pem
-        mkdir /home/$EC2_USER/docker
+        
 
         # SSH, SCP commands
         SSH_COMMAND="ssh -i $EC2_KEY_NAME.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST"
