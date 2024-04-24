@@ -184,6 +184,9 @@ jobs:
         # Copy compose.yml and Dockerfile to EC2 server
         $SCP_COMMAND compose.yaml $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
         $SCP_COMMAND Dockerfile $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
+        #$SCP_COMMAND .dockerignore $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
+        $SCP_COMMAND requirements.txt $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
+
         
         # Pull and run the Docker container on EC2
         $SSH_COMMAND "cd /home/ubuntu/docker/ && docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG && docker compose -f compose.yaml up -d --force-recreate"
