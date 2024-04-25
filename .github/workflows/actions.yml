@@ -176,8 +176,7 @@ jobs:
         chmod 400 $EC2_KEY_NAME.pem
         # Create docker dir
         mkdir docker
-        #Create ACCOUNT_ID Docker Secret
-        echo "$ACCOUNT_ID" > secret.txt && docker secret create ACCOUNT_ID ./secret.txt
+        export ACCOUNT_ID=$ACCOUNT_ID
         
         
 
