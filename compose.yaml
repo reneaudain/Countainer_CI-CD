@@ -7,7 +7,7 @@
 # You can add other services your application may depend on here, such as a
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
-version: '2.4'  # The last version of Docker Compose file format that directly supports mem_limit and cpus
+# The last version of Docker Compose file format that directly supports mem_limit and cpus
 services:
   counter-service:
     container_name: counter-service
@@ -17,8 +17,8 @@ services:
     ports:
       - "80:8080"
     restart: always
-    mem_limit: 256M
-    cpus: 0.5
+    #mem_limit: 256M
+    #cpus: 0.5
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
 # start the database before your application. The `db-data` volume persists the
