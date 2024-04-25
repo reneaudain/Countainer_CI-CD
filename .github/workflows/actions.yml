@@ -176,7 +176,7 @@ jobs:
         chmod 400 $EC2_KEY_NAME.pem
         # Create docker dir
         mkdir docker
-        export ACCOUNT_ID=$ACCOUNT_ID
+        echo $ACCOUNT_ID > .env
         
         
 
