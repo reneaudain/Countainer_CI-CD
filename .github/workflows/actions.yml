@@ -159,6 +159,7 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         # Push the latest tag
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+        
 
     - name: Deploy to EC2
       env:
@@ -173,8 +174,11 @@ jobs:
         # Save PEM key to file and set permissions
         echo "$EC2_PEM_KEY" > $EC2_KEY_NAME.pem
         chmod 400 $EC2_KEY_NAME.pem
+        # Create docker dir
         mkdir docker
-        export ACCOUNT_ID=${{ secrets.ACCOUNT_ID }}
+        #Create ACCOUNT_ID Docker Secret
+        echo "$ACCOUNT_ID" > secret.txt && docker secret create ACCOUNT_ID ./secret.txt
+        
         
 
         # SSH, SCP commands
