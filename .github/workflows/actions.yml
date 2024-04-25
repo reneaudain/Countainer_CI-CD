@@ -173,7 +173,7 @@ jobs:
       run: |
         # Save PEM key to file and set permissions
         echo "$EC2_PEM_KEY" > $EC2_KEY_NAME.pem
-        echo $ACCOUNT_ID > .env
+        echo "$ACCOUNT_ID" > .env
         chmod 400 $EC2_KEY_NAME.pem
         # Create docker dir
         mkdir docker
