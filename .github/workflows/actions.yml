@@ -168,6 +168,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: resume-project
         IMAGE_TAG: ${{ steps.next_version.outputs.tag }}
+        ACCOUNT_ID: ${{ secrets.ACCOUNT_ID }}
       run: |
         # Save PEM key to file and set permissions
         echo "$EC2_PEM_KEY" > $EC2_KEY_NAME.pem
