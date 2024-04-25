@@ -11,7 +11,7 @@
 services:
   counter-service:
     container_name: counter-service
-    image: {$ACCOUNT_ID}".dkr.ecr.us-east-1.amazonaws.com/resume-project:latest"
+    image: ${{ secrets.ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/resume-project:latest
     volumes:
       - ./data:/data
     ports:
