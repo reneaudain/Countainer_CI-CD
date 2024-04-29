@@ -6,6 +6,41 @@ on:
   push:
     branches: [ "dev" ]
 jobs:
+  tflint:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+      name: Checkout source code
+
+    - uses: actions/cache@v4
+      name: Cache plugin dir
+      with:
+        path: ~/.tflint.d/plugins
+        key: ${{ matrix.os }}-tflint-${{ hashFiles('.tflint.hcl') }}
+
+    - uses: terraform-linters/setup-tflint@v4
+      name: Setup TFLint
+      with:
+        tflint_version: v0.50.3
+
+    - name: Show version
+      run: tflint --version
+
+    - name: Init TFLint
+      run: tflint --init
+      #env:
+        # https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/plugins.md#avoiding-rate-limiting
+        #GITHUB_TOKEN: ${{ github.token }}
+
+    - name: Run TFLint
+      run: tflint -f compact
+
+      
   build-and-push:
     runs-on: ubuntu-latest
 
@@ -192,7 +227,8 @@ jobs:
         $SCP_COMMAND compose.yaml $EC2_USER@$EC2_HOST:/home/$EC2_USER/docker/
         
         # Pull and run the Docker container on EC2
-        $SSH_COMMAND "cd /home/ubuntu/docker/ && docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG && docker compose -f compose.yaml up -d --force-recreate"
+        #$SSH_COMMAND "cd /home/ubuntu/docker/ && docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG && docker compose -f compose.yaml up -d --force-recreate"
+        $SSH_COMMAND "cd /home/ubuntu/docker/ && docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG && ACCOUNT_ID=$ACCOUNT_ID docker compose -f compose.yaml up -d --force-recreate"
         
         # Cleanup PEM key
         rm -f $EC2_KEY_NAME.pem
