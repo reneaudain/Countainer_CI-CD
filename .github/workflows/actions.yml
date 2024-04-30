@@ -54,7 +54,7 @@ jobs:
       TF_CLOUD_ORGANIZATION: "devdotjson"
       TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
       TF_WORKSPACE: "resume-project"
-      CONFIG_DIRECTORY: "./"
+      CONFIG_DIRECTORY: "."
       
     if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
     name: "Terraform Plan"
