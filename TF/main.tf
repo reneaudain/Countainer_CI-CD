@@ -1,7 +1,7 @@
 provider "aws" {
   region = local.region
-  access_key = var.Access_key
-  secret_key = var.Secret_key
+  access_key = $AWS_ACCESS_KEY_ID
+  secret_key = $AWS_SECRET_ACCESS_KEY
 }
 
 data "aws_vpc" "default" {
