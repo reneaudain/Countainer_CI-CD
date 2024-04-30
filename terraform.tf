@@ -4,6 +4,7 @@ terraform {
 
     workspaces {
       name = "resume-project"
+      tags = ["some-tag"]
     }
   }
 }
