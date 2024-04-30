@@ -54,7 +54,7 @@ jobs:
       TF_CLOUD_ORGANIZATION: "GitHub-Actions_CICD"
       TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
       TF_WORKSPACE: "resume-project"
-      CONFIG_DIRECTORY: "./"
+      CONFIG_DIRECTORY: "."
       
     name: "Terraform Apply"
     runs-on: ubuntu-latest
