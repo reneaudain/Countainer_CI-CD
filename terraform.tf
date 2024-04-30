@@ -3,7 +3,7 @@ terraform {
     organization = "GitHub-Actions_CICD"
 
     workspaces {
-      name = "resume-project"
+      #name = "resume-project"
       tags = ["some-tag"]
     }
   }
