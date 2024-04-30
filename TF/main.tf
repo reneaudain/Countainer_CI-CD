@@ -1,5 +1,7 @@
 provider "aws" {
   region = local.region
+  access_key = var.acces_key
+  secret_key = var.secret_key
 }
 
 data "aws_vpc" "default" {
