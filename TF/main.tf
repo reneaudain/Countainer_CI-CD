@@ -1,8 +1,8 @@
-provider "aws" {
-  region = local.region
-  access_key = var.Access_key
-  secret_key = var.Secret_key
-}
+#provider "aws" {
+#  region = local.region
+#  access_key = var.Access_key
+#  secret_key = var.Secret_key
+#}
 
 data "aws_vpc" "default" {
   default = true
