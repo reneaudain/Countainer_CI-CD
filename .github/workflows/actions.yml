@@ -131,13 +131,21 @@ jobs:
           run: ${{ steps.apply-run.outputs.run_id }}
           comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
 
-      - run: terraform output instance_id
-      - run: echo terraform output instance_id >> ${{ secrets.EC2_HOST }}
-      - run: echo terraform output key_name >> ${{ secrets.EC2_KEY_NAME }}
-      - run: echo terraform output user_id >> ${{ secrets.AWS_ACCESS_KEY_ID }}
-      - run: echo terraform output user_secret >> ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - run: echo terraform output instance_id >> ${{ secrets.EC2_HOST }}
-      - run: echo terraform output EC2_PEM_KEY >> ${{ secrets.EC2_PEM_KEY }}
+
+
+      - name: Export Terraform Output
+        id: tf
+        
+        run: echo EC2_HOST=$(terraform output -raw instance_id) >> $GITHUB_ENV
+             echo EC2_KEY_NAME=$(terraform output -raw key_name) >> $GITHUB_ENV
+             echo EC2_PEM_KEY=$(terraform output -raw EC2_PEM_KEY) >> $GITHUB_ENV
+             #echo AWS_ACCESS_KEY_ID=$(terraform output -raw user_id) >> $GITHUB_ENV
+             #echo AWS_SECRET_ACCESS_KEY=$(terraform output -raw user_secret) >> $GITHUB_ENV
+             #echo EC2_HOST=$(terraform output -raw instance_id) >> $GITHUB_ENV
+             #echo EC2_HOST=$(terraform output -raw instance_id) >> $GITHUB_ENV
+        working-directory: ./terraform
+   
+
 
             
   
