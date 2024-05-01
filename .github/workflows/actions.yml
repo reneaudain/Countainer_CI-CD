@@ -132,13 +132,13 @@ jobs:
           comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
 
       - run: terraform output instance_id
-      - run: echo terraform output instance_id >> ${{ secrets.EC2_HOST }
-      - run: echo terraform output key_name >> ${{ secrets.EC2_KEY_NAME }
-      - run: echo terraform output user_id >> ${{ secrets.AWS_ACCESS_KEY_ID }
-      - run: echo terraform output user_secret >> ${{ secrets.AWS_SECRET_ACCESS_KEY }
-      - run: echo terraform output instance_id >> ${{ secrets.EC2_HOST }
-      - run: echo terraform output EC2_PEM_KEY >> ${{ secrets.EC2_PEM_KEY }
-      - run: echo ${{ secrets.EC2_HOST }
+      - run: echo terraform output instance_id >> ${{ secrets.EC2_HOST }}
+      - run: echo terraform output key_name >> ${{ secrets.EC2_KEY_NAME }}
+      - run: echo terraform output user_id >> ${{ secrets.AWS_ACCESS_KEY_ID }}
+      - run: echo terraform output user_secret >> ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: echo terraform output instance_id >> ${{ secrets.EC2_HOST }}
+      - run: echo terraform output EC2_PEM_KEY >> ${{ secrets.EC2_PEM_KEY }}
+
             
   
 
