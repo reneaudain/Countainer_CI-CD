@@ -62,7 +62,7 @@ jobs:
       TF_WORKSPACE: "resume-project"
       CONFIG_DIRECTORY: "./TF"
     name: "Terraform Apply"
-    needs: terraform-plan
+    #needs: terraform-plan
     runs-on: ubuntu-latest
     permissions:
       contents: read
