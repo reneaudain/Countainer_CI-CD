@@ -94,7 +94,14 @@ jobs:
           run: ${{ steps.apply-run.outputs.run_id }}
           comment: "Apply Run from GitHub Actions CI ${{ github.sha }}"
 
-
+      - name: Fetch Outputs
+        id: fetch-outputs
+        run: |
+         OUTPUTS=$(curl \
+         --header "Authorization: Bearer ${{ secrets.TF_API_TOKEN }}" \
+         --header "Content-Type: application/vnd.api+json" \
+         https://app.terraform.io/api/v2/organizations/${{ env.TF_CLOUD_ORGANIZATION }}/workspaces/${{ env.TF_WORKSPACE }}/current-state-version)
+         echo "::set-output name=outputs::$OUTPUTS"
 
       - name: Export Terraform Output
         id: tf
