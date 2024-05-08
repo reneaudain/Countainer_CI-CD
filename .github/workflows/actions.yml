@@ -104,7 +104,7 @@ jobs:
       #    echo "::set-output name=outputs::$OUTPUTS"
 
       - name: O export
-        id: export outputs
+        id: export-outputs
         run: | 
           Set-Location (Join-Path $env:GITHUB_WORKSPACE terraform) # Task does not support 'working-directory' property
           terraform apply -auto-approve
