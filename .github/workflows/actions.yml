@@ -115,7 +115,7 @@ jobs:
             Write-Output "::set-output name=${key}::${outputVariableValue}"
             Write-Output "TF_OUT_${key}=${outputVariableValue}" >> $env:GITHUB_ENV
             } 
-        shell: pwsh
+        shell: sh
       - name: Export Terraform Output
         id: tf
         
